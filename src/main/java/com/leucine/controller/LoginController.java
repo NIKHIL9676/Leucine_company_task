@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.leucine.entity.User;
 import com.leucine.service.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
+	
     @Autowired
     private UserService userService;
 
@@ -18,12 +21,14 @@ public class LoginController {
     public String getLoginPage() {
         return "login";
     }
+    
 
     @PostMapping("/login")
-    public String loginPost(String username, String password, String role, Model model) {
+    public String loginPost(String username, String password, String role, Model model, HttpSession session) {
         User user = userService.findUserByUsername(username);
-
+        System.out.println(username);
         if (user == null) {
+        	System.out.println(user);
             model.addAttribute("error", "User not found");
             return "login";
         }
@@ -34,12 +39,17 @@ public class LoginController {
             model.addAttribute("error", "Please select valid role");
             return "login";
         }
+        session.setAttribute("userId", user.getId()); // Set the session attribute here
+
 
         switch (user.getRole()) {
+        
             case STUDENT:
-                return "redirect:/student/dashboard"; // Change to your student dashboard path
+            	model.addAttribute("studentName", user.getName());            	
+                return "studentDashboard"; // Change to your student dashboard path
             case FACULTY_MEMBER:
-                return "redirect:/faculty/dashboard"; // Change to your faculty dashboard path
+            	model.addAttribute("facultyName", user.getName());
+                return "facultyDashboard"; // Change to your faculty dashboard path
             case ADMINISTRATOR:
                 return "redirect:/admin/dashboard"; // Change to your admin dashboard path
             default:

@@ -63,7 +63,7 @@ public class Faculty{
 
 	@Override
 	public String toString() {
-		return "Faculty [id=" + id + ", user=" + user + ", photo=" + photo + ", officeHours=" + officeHours + "]";
+		return "Faculty [Faculty id=" + id + ", user=" + user + ", photo=" + photo + ", officeHours=" + officeHours + "]";
 	}
 
 	public Faculty(int id, User user, String photo, Department department, String officeHours) {

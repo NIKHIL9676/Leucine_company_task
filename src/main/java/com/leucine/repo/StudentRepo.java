@@ -6,4 +6,5 @@ import com.leucine.entity.Student;
 
 public interface StudentRepo extends JpaRepository<Student, Integer>{
 
+	Student findByUserId(int id);
 }

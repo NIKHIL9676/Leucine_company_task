@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .profile-card {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Profile Details</h1>
+        <div class="card profile-card shadow-sm">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img th:src="@{${student.photo}}" alt="Profile Photo" class="profile-photo rounded-circle border" />
+                        <h5 class="card-title mt-3" th:text="${user.name}">Student Name</h5>
+                    </div>
+                    <div class="col-md-8">
+                        <h6>Email:</h6>
+                        <p class="text-muted" th:text="${user.email}">Email Address</p>
+                        <h6>Phone:</h6>
+                        <p class="text-muted" th:text="${user.phone}">Phone Number</p>
+                        <h6>Year:</h6>
+                        <p class="text-muted" th:text="${student.year}">Year</p>
+                        <h6>Department:</h6>
+                        <p class="text-muted" th:text="${department.name}">Department Name</p>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <a th:href="@{/student/dashboard}" class="btn btn-primary">Back to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -12,243 +12,180 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 import org.springframework.stereotype.Service;
 
-import com.leucine.entity.User;
-import com.leucine.repo.UserRepo;
+import com.leucine.entity.Faculty;
+import com.leucine.repo.FacultyRepo;
 
 @Service
-public class UserService implements UserRepo {
+public class FacultyService implements FacultyRepo {
+	@Autowired
+    private FacultyRepo facultyRepository;
 
-    @Autowired
-    private UserRepo userRepo;
-
-    public User findUserByUsername(String username) {
-        return userRepo.findByUsername(username);
+    public List<Faculty> findByDepartmentName(String departmentName) {
+        return facultyRepository.findByDepartment_Name(departmentName);
+    }
+    public Faculty findFacultyById(int id) {
+    	return facultyRepository.findById(id).get();
     }
     
-    
-    public User findById(int id)
-    {
-    	Optional<User> user= userRepo.findById(id);
-    	if(user.isPresent()) {
-    		return user.get();
-    	}
-    	return null;
-    }
-
-
 	@Override
 	public void flush() {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	@Override
-	public <S extends User> S saveAndFlush(S entity) {
+	public <S extends Faculty> S saveAndFlush(S entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public <S extends User> List<S> saveAllAndFlush(Iterable<S> entities) {
+	public <S extends Faculty> List<S> saveAllAndFlush(Iterable<S> entities) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public void deleteAllInBatch(Iterable<User> entities) {
+	public void deleteAllInBatch(Iterable<Faculty> entities) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	@Override
 	public void deleteAllByIdInBatch(Iterable<Integer> ids) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	@Override
 	public void deleteAllInBatch() {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	@Override
-	public User getOne(Integer id) {
+	public Faculty getOne(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public User getById(Integer id) {
+	public Faculty getById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public User getReferenceById(Integer id) {
+	public Faculty getReferenceById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public <S extends User> List<S> findAll(Example<S> example) {
+	public <S extends Faculty> List<S> findAll(Example<S> example) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public <S extends User> List<S> findAll(Example<S> example, Sort sort) {
+	public <S extends Faculty> List<S> findAll(Example<S> example, Sort sort) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public <S extends User> List<S> saveAll(Iterable<S> entities) {
+	public <S extends Faculty> List<S> saveAll(Iterable<S> entities) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public List<User> findAll() {
+	public List<Faculty> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public List<User> findAllById(Iterable<Integer> ids) {
+	public List<Faculty> findAllById(Iterable<Integer> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public <S extends User> S save(S entity) {
+	public <S extends Faculty> S save(S entity) {
 		// TODO Auto-generated method stub
-		return userRepo.save(entity);
+		return facultyRepository.save(entity);
 	}
-
-
 	@Override
-	public Optional<User> findById(Integer id) {
+	public Optional<Faculty> findById(Integer id) {
 		// TODO Auto-generated method stub
 		return Optional.empty();
 	}
-
-
 	@Override
 	public boolean existsById(Integer id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-
 	@Override
 	public long count() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
 	@Override
 	public void deleteById(Integer id) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	@Override
-	public void delete(User entity) {
+	public void delete(Faculty entity) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	@Override
 	public void deleteAllById(Iterable<? extends Integer> ids) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	@Override
-	public void deleteAll(Iterable<? extends User> entities) {
+	public void deleteAll(Iterable<? extends Faculty> entities) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	@Override
 	public void deleteAll() {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	@Override
-	public List<User> findAll(Sort sort) {
+	public List<Faculty> findAll(Sort sort) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public Page<User> findAll(Pageable pageable) {
+	public Page<Faculty> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public <S extends User> Optional<S> findOne(Example<S> example) {
+	public <S extends Faculty> Optional<S> findOne(Example<S> example) {
 		// TODO Auto-generated method stub
 		return Optional.empty();
 	}
-
-
 	@Override
-	public <S extends User> Page<S> findAll(Example<S> example, Pageable pageable) {
+	public <S extends Faculty> Page<S> findAll(Example<S> example, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public <S extends User> long count(Example<S> example) {
+	public <S extends Faculty> long count(Example<S> example) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
 	@Override
-	public <S extends User> boolean exists(Example<S> example) {
+	public <S extends Faculty> boolean exists(Example<S> example) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-
 	@Override
-	public <S extends User, R> R findBy(Example<S> example, Function<FetchableFluentQuery<S>, R> queryFunction) {
+	public <S extends Faculty, R> R findBy(Example<S> example, Function<FetchableFluentQuery<S>, R> queryFunction) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 	@Override
-	public User findByUsername(String username) {
+	public List<Faculty> findByDepartment_Name(String departmentName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public Faculty findByUserId(int userId) {
+		// TODO Auto-generated method stub
+        return facultyRepository.findByUserId(userId); // Create this method if necessary
+	}
+	
 }
